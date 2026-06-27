@@ -237,17 +237,18 @@ h1 {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
-  color: #2e2e2e;
+  font-size: 1.4rem;
+  color: #3a3a3a;
   padding: 0;
   flex-shrink: 0;
   line-height: 1;
-  margin-top: 0.1rem;
+  margin-top: 0.05rem;
   transition: color 0.2s, transform 0.15s;
 }
 
 .star-btn:hover { color: #c8a000; transform: scale(1.15); }
 .star-btn.starred { color: #c8a000; }
+.star-btn:not(.starred) { color: #3a3a3a; }
 
 .task-body { flex: 1; min-width: 0; }
 
