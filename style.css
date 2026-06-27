@@ -231,14 +231,14 @@ h1 {
   transition: opacity 0.2s;
 }
 
-.task-item.completed { opacity: 0.35; }
-.task-item.completed .star-btn { opacity: calc(1 / 0.35); color: #c8a000; }
+.task-item.completed .task-body { opacity: 0.35; }
+.task-item.completed .delete-btn { opacity: 0.35; }
 
 .star-btn {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: #3a3a3a;
   padding: 0;
   flex-shrink: 0;
@@ -247,9 +247,9 @@ h1 {
   transition: color 0.2s, transform 0.15s;
 }
 
-.star-btn:hover { color: #c8a000; transform: scale(1.15); }
+.star-btn:hover { color: #ffcc00; transform: scale(1.35); }
 .star-btn.starred { color: #c8a000; }
-.star-btn:not(.starred) { color: #3a3a3a; }
+.star-btn:not(.starred) { color: #3a3a3a; transform: scale(.75)}
 
 .task-body { flex: 1; min-width: 0; }
 
