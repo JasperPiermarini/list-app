@@ -45,20 +45,22 @@
     </form>
 
     <div class="filter-group">
-      <div class="filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="active">Active</button>
-        <button class="filter-btn" data-filter="completed">Completed</button>
+      <div class="filter-row">
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="active">Active</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+        <div class="filters filters--sort">
+          <span class="filter-label">Sort</span>
+          <button class="sort-btn active" data-sort="created">Date Added</button>
+          <button class="sort-btn" data-sort="due">Due Date</button>
+        </div>
       </div>
       <div class="filters filters--people">
         <button class="person-btn active" data-person="all">Everyone</button>
         <button class="person-btn" data-person="Dorien">Dorien</button>
         <button class="person-btn" data-person="Jasper">Jasper</button>
-      </div>
-      <div class="filters filters--sort">
-        <span class="filter-label">Sort</span>
-        <button class="sort-btn active" data-sort="created">Date Added</button>
-        <button class="sort-btn" data-sort="due">Due Date</button>
       </div>
     </div>
 

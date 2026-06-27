@@ -161,7 +161,20 @@ h1 {
 #task-form button[type="submit"]:hover { color: #e8e8e8; }
 
 /* Filters */
-.filter-group { margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.filter-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #1e1e1e;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .filters { display: flex; gap: 1.5rem; }
 
@@ -194,15 +207,22 @@ h1 {
 .filter-btn.active::after, .person-btn.active::after, .sort-btn.active::after { width: 100%; }
 .filter-btn:hover, .person-btn:hover, .sort-btn:hover { color: #aaa; }
 
-.filters--sort { display: flex; align-items: center; gap: 1rem; }
+.filters--sort {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-left: 1rem;
+  border-left: 1px solid #2a2a2a;
+}
 
 .filter-label {
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: 0.65rem;
+  font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #555;
   padding-bottom: 0.3rem;
+  margin-right: 0.25rem;
 }
 
 .sort-btn {
