@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>List</title>
+  <title>Dor Jobs List</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
@@ -16,15 +16,15 @@
     <div class="picker-box">
       <p class="picker-label">Who are you?</p>
       <div class="picker-btns">
+        <button class="picker-btn" data-user="Dorien">Dorien</button>
         <button class="picker-btn" data-user="Jasper">Jasper</button>
-        <button class="picker-btn" data-user="Jim">Jim</button>
       </div>
     </div>
   </div>
 
   <div class="container" id="app" style="display:none">
     <header>
-      <h1>List</h1>
+      <h1>Dor Jobs List</h1>
       <p class="subtitle" id="summary"></p>
     </header>
 
@@ -37,8 +37,8 @@
       <div class="form-row form-row--meta">
         <input type="url" id="link-input" placeholder="Link (optional)" />
         <select id="assignee-input">
+          <option value="Dorien">Dorien</option>
           <option value="Jasper">Jasper</option>
-          <option value="Jim">Jim</option>
         </select>
         <input type="text" id="tags-input" placeholder="Tags (comma separated)" />
       </div>
@@ -52,8 +52,8 @@
       </div>
       <div class="filters filters--people">
         <button class="person-btn active" data-person="all">Everyone</button>
+        <button class="person-btn" data-person="Dorien">Dorien</button>
         <button class="person-btn" data-person="Jasper">Jasper</button>
-        <button class="person-btn" data-person="Jim">Jim</button>
       </div>
     </div>
 
