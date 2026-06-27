@@ -30,8 +30,8 @@
 
     <form id="task-form">
       <div class="form-row">
-        <input type="text" id="task-input" placeholder="What needs to be done?" required />
-        <input type="date" id="due-input" />
+        <input type="text" id="task-input" placeholder="Job description" required />
+        <input placeholder="Due date" type="date" id="due-input" />
         <button type="submit">Add</button>
       </div>
       <div class="form-row form-row--meta">
@@ -54,6 +54,11 @@
         <button class="person-btn active" data-person="all">Everyone</button>
         <button class="person-btn" data-person="Dorien">Dorien</button>
         <button class="person-btn" data-person="Jasper">Jasper</button>
+      </div>
+      <div class="filters filters--sort">
+        <span class="filter-label">Sort</span>
+        <button class="sort-btn active" data-sort="created">Date Added</button>
+        <button class="sort-btn" data-sort="due">Due Date</button>
       </div>
     </div>
 

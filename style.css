@@ -190,9 +190,45 @@ h1 {
   transition: width 0.2s;
 }
 
-.filter-btn.active, .person-btn.active { color: #e8e8e8; }
-.filter-btn.active::after, .person-btn.active::after { width: 100%; }
-.filter-btn:hover, .person-btn:hover { color: #aaa; }
+.filter-btn.active, .person-btn.active, .sort-btn.active { color: #e8e8e8; }
+.filter-btn.active::after, .person-btn.active::after, .sort-btn.active::after { width: 100%; }
+.filter-btn:hover, .person-btn:hover, .sort-btn:hover { color: #aaa; }
+
+.filters--sort { display: flex; align-items: center; gap: 1rem; }
+
+.filter-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #555;
+  padding-bottom: 0.3rem;
+}
+
+.sort-btn {
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s;
+  position: relative;
+  padding-bottom: 0.3rem;
+}
+
+.sort-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: #e8e8e8;
+  transition: width 0.2s;
+}
 
 /* Tag filter bar */
 #tag-filter-bar {
@@ -278,6 +314,25 @@ h1 {
   border: 1px solid #2a2a2a;
   padding: 0.1rem 0.45rem;
 }
+
+.due-edit {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #2a2a2a;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: #777;
+  outline: none;
+  cursor: pointer;
+  color-scheme: dark;
+  padding: 0;
+  width: 7rem;
+}
+
+.due-edit::-webkit-calendar-picker-indicator { filter: invert(0.4); cursor: pointer; opacity: 0.5; }
+.due-edit:hover { border-color: #555; }
+.due-edit:focus { border-color: #888; color: #e8e8e8; }
 
 .task-due {
   font-size: 0.68rem;

@@ -41,6 +41,7 @@ let tasks = [];
 let filter = 'all';
 let personFilter = 'all';
 let tagFilter = null;
+let sortBy = 'created';
 
 // ── DOM refs ──────────────────────────────────────────────────
 const form = document.getElementById('task-form');
@@ -102,22 +103,33 @@ function linkLabel(url) {
   return `<a class="task-link" href="${escAttr(url)}" target="_blank" rel="noopener noreferrer">${escHtml(display)}</a>`;
 }
 
+function getSorted(list) {
+  if (sortBy === 'due') {
+    return [...list].sort((a, b) => {
+      if (!a.due && !b.due) return 0;
+      if (!a.due) return 1;
+      if (!b.due) return -1;
+      return a.due < b.due ? -1 : a.due > b.due ? 1 : 0;
+    });
+  }
+  return list; // already sorted by createdAt desc from Firestore
+}
+
 // ── Render ────────────────────────────────────────────────────
 function render() {
-  // Collect all tags across all tasks for the filter bar
   const allTags = [...new Set(tasks.flatMap(t => t.tags || []))].sort();
 
   tagFilterBar.innerHTML = allTags.map(tag =>
     `<button class="tag-filter-chip${tagFilter === tag ? ' active' : ''}" data-tag="${escAttr(tag)}">#${escHtml(tag)}</button>`
   ).join('');
 
-  const visible = tasks.filter(t => {
+  const visible = getSorted(tasks.filter(t => {
     if (filter === 'active' && t.completed) return false;
     if (filter === 'completed' && !t.completed) return false;
     if (personFilter !== 'all' && t.assignee !== personFilter) return false;
     if (tagFilter && !(t.tags || []).includes(tagFilter)) return false;
     return true;
-  });
+  }));
 
   if (visible.length === 0) {
     taskList.innerHTML = `<li class="empty">No tasks here.</li>`;
@@ -128,6 +140,7 @@ function render() {
       ).join('');
       const meta = [
         `<span class="assignee-badge">${escHtml(t.assignee || '')}</span>`,
+        `<input class="due-edit" type="date" data-id="${t.id}" value="${escAttr(t.due || '')}" title="Edit due date" />`,
         dueLabel(t.due, t.completed),
         linkLabel(t.link),
         tagChips
@@ -195,6 +208,13 @@ taskList.addEventListener('click', e => {
   }
 });
 
+// Inline due date editing
+taskList.addEventListener('change', e => {
+  if (!e.target.classList.contains('due-edit')) return;
+  const id = e.target.dataset.id;
+  tasksCol.doc(id).update({ due: e.target.value });
+});
+
 tagFilterBar.addEventListener('click', e => {
   if (!e.target.classList.contains('tag-filter-chip')) return;
   const tag = e.target.dataset.tag;
@@ -215,6 +235,15 @@ document.querySelectorAll('.person-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     personFilter = btn.dataset.person;
     document.querySelectorAll('.person-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render();
+  });
+});
+
+document.querySelectorAll('.sort-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    sortBy = btn.dataset.sort;
+    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     render();
   });
