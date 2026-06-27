@@ -17,9 +17,14 @@
     </header>
 
     <form id="task-form">
-      <input type="text" id="task-input" placeholder="What needs to be done?" required />
-      <input type="date" id="due-input" />
-      <button type="submit">Add Task</button>
+      <div class="form-row">
+        <input type="text" id="task-input" placeholder="What needs to be done?" required />
+        <input type="date" id="due-input" />
+        <button type="submit">Add</button>
+      </div>
+      <div class="form-row form-row--link">
+        <input type="url" id="link-input" placeholder="Link (optional)" />
+      </div>
     </form>
 
     <div class="filters">

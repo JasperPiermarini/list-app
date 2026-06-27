@@ -6,6 +6,7 @@ let filter = 'all';
 const form = document.getElementById('task-form');
 const taskInput = document.getElementById('task-input');
 const dueInput = document.getElementById('due-input');
+const linkInput = document.getElementById('link-input');
 const taskList = document.getElementById('task-list');
 const footer = document.getElementById('footer');
 const remaining = document.getElementById('remaining');
@@ -45,6 +46,17 @@ function dueLabel(dateStr, completed) {
   return `<span class="${cls}">${label}</span>`;
 }
 
+function linkLabel(url) {
+  if (!url) return '';
+  let display;
+  try {
+    display = new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    display = 'link';
+  }
+  return `<a class="task-link" href="${escAttr(url)}" target="_blank" rel="noopener noreferrer">${escHtml(display)}</a>`;
+}
+
 function render() {
   const visible = tasks.filter(t =>
     filter === 'all' ? true :
@@ -59,16 +71,19 @@ function render() {
       'No tasks yet. Add one above!'
     }</li>`;
   } else {
-    taskList.innerHTML = visible.map(t => `
-      <li class="task-item${t.completed ? ' completed' : ''}" data-id="${t.id}">
-        <input type="checkbox" ${t.completed ? 'checked' : ''} aria-label="Mark complete" />
-        <div class="task-body">
-          <div class="task-text">${escHtml(t.text)}</div>
-          ${dueLabel(t.due, t.completed)}
-        </div>
-        <button class="delete-btn" aria-label="Delete task">✕</button>
-      </li>
-    `).join('');
+    taskList.innerHTML = visible.map(t => {
+      const meta = [dueLabel(t.due, t.completed), linkLabel(t.link)].filter(Boolean).join('');
+      return `
+        <li class="task-item${t.completed ? ' completed' : ''}" data-id="${t.id}">
+          <button class="star-btn${t.completed ? ' starred' : ''}" aria-label="Mark complete">★</button>
+          <div class="task-body">
+            <div class="task-text">${escHtml(t.text)}</div>
+            ${meta ? `<div class="task-meta">${meta}</div>` : ''}
+          </div>
+          <button class="delete-btn" aria-label="Delete task">✕</button>
+        </li>
+      `;
+    }).join('');
   }
 
   const active = tasks.filter(t => !t.completed).length;
@@ -86,31 +101,42 @@ function escHtml(str) {
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
+function escAttr(str) {
+  return str.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
 form.addEventListener('submit', e => {
   e.preventDefault();
   const text = taskInput.value.trim();
   if (!text) return;
-  tasks.unshift({ id: Date.now(), text, due: dueInput.value, completed: false });
+  tasks.unshift({
+    id: Date.now(),
+    text,
+    due: dueInput.value,
+    link: linkInput.value.trim(),
+    completed: false
+  });
   taskInput.value = '';
   dueInput.value = '';
+  linkInput.value = '';
   save();
   render();
   taskInput.focus();
 });
 
-taskList.addEventListener('change', e => {
-  if (e.target.type !== 'checkbox') return;
-  const id = Number(e.target.closest('.task-item').dataset.id);
-  const t = tasks.find(t => t.id === id);
-  if (t) { t.completed = e.target.checked; save(); render(); }
-});
-
 taskList.addEventListener('click', e => {
-  if (!e.target.classList.contains('delete-btn')) return;
-  const id = Number(e.target.closest('.task-item').dataset.id);
-  tasks = tasks.filter(t => t.id !== id);
-  save();
-  render();
+  if (e.target.classList.contains('star-btn')) {
+    const id = Number(e.target.closest('.task-item').dataset.id);
+    const t = tasks.find(t => t.id === id);
+    if (t) { t.completed = !t.completed; save(); render(); }
+    return;
+  }
+  if (e.target.classList.contains('delete-btn')) {
+    const id = Number(e.target.closest('.task-item').dataset.id);
+    tasks = tasks.filter(t => t.id !== id);
+    save();
+    render();
+  }
 });
 
 document.querySelectorAll('.filter-btn').forEach(btn => {
