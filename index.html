@@ -10,7 +10,19 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
+
+  <!-- User picker overlay -->
+  <div id="user-picker">
+    <div class="picker-box">
+      <p class="picker-label">Who are you?</p>
+      <div class="picker-btns">
+        <button class="picker-btn" data-user="Jasper">Jasper</button>
+        <button class="picker-btn" data-user="Jim">Jim</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="app" style="display:none">
     <header>
       <h1>List</h1>
       <p class="subtitle" id="summary"></p>
@@ -22,16 +34,30 @@
         <input type="date" id="due-input" />
         <button type="submit">Add</button>
       </div>
-      <div class="form-row form-row--link">
+      <div class="form-row form-row--meta">
         <input type="url" id="link-input" placeholder="Link (optional)" />
+        <select id="assignee-input">
+          <option value="Jasper">Jasper</option>
+          <option value="Jim">Jim</option>
+        </select>
+        <input type="text" id="tags-input" placeholder="Tags (comma separated)" />
       </div>
     </form>
 
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="active">Active</button>
-      <button class="filter-btn" data-filter="completed">Completed</button>
+    <div class="filter-group">
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+      </div>
+      <div class="filters filters--people">
+        <button class="person-btn active" data-person="all">Everyone</button>
+        <button class="person-btn" data-person="Jasper">Jasper</button>
+        <button class="person-btn" data-person="Jim">Jim</button>
+      </div>
     </div>
+
+    <div id="tag-filter-bar"></div>
 
     <ul id="task-list"></ul>
 
@@ -41,6 +67,8 @@
     </footer>
   </div>
 
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
