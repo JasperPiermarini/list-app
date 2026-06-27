@@ -22,7 +22,7 @@ function setUser(name) {
   sessionStorage.setItem('list-user', name);
   picker.style.display = 'none';
   app.style.display = 'block';
-  document.getElementById('assignee-input').value = name;
+  document.getElementById('assignee-input').value = 'Dorien';
   startListening();
 }
 
