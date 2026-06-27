@@ -32,7 +32,7 @@ h1 {
 
 .subtitle {
   font-size: 0.75rem;
-  color: #555;
+  color: #777;
   margin-top: 0.4rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -57,7 +57,7 @@ h1 {
   font-size: 0.75rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #555;
+  color: #777;
   margin-bottom: 2rem;
 }
 
@@ -74,7 +74,7 @@ h1 {
   font-size: 1.5rem;
   font-weight: 300;
   letter-spacing: 0.2em;
-  color: #555;
+  color: #777;
   cursor: pointer;
   padding-bottom: 0.4rem;
   transition: color 0.2s, border-color 0.2s;
@@ -112,7 +112,7 @@ h1 {
 }
 
 #link-input, #tags-input { font-size: 0.8rem; color: #888; }
-#task-input::placeholder, #link-input::placeholder, #tags-input::placeholder { color: #444; }
+#task-input::placeholder, #link-input::placeholder, #tags-input::placeholder { color: #666; }
 
 #due-input {
   padding: 0.75rem 0.5rem;
@@ -120,7 +120,7 @@ h1 {
   background: transparent;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.8rem;
-  color: #555;
+  color: #777;
   outline: none;
   color-scheme: dark;
 }
@@ -137,7 +137,7 @@ h1 {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #555;
+  color: #777;
   outline: none;
   cursor: pointer;
   color-scheme: dark;
@@ -146,7 +146,7 @@ h1 {
 #task-form button[type="submit"] {
   padding: 0.75rem 0 0.75rem 0.75rem;
   background: none;
-  color: #555;
+  color: #777;
   border: none;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.75rem;
@@ -174,7 +174,7 @@ h1 {
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #444;
+  color: #666;
   cursor: pointer;
   transition: color 0.2s;
   position: relative;
@@ -210,13 +210,13 @@ h1 {
   font-size: 0.65rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #555;
+  color: #777;
   padding: 0.2rem 0.6rem;
   cursor: pointer;
   transition: all 0.15s;
 }
 
-.tag-filter-chip:hover { color: #e8e8e8; border-color: #555; }
+.tag-filter-chip:hover { color: #e8e8e8; border-color: #777; }
 .tag-filter-chip.active { color: #c8a000; border-color: #c8a000; }
 
 /* Task list */
@@ -231,8 +231,8 @@ h1 {
   transition: opacity 0.2s;
 }
 
-.task-item.completed .task-body { opacity: 0.35; }
-.task-item.completed .delete-btn { opacity: 0.35; }
+.task-item.completed .task-body { opacity: 0.75; }
+.task-item.completed .delete-btn { opacity: 0.75; }
 
 .star-btn {
   background: none;
@@ -260,7 +260,7 @@ h1 {
   word-break: break-word;
 }
 
-.task-item.completed .task-text { text-decoration: line-through; color: #444; }
+.task-item.completed .task-text { text-decoration: line-through; color: #666; }
 
 .task-meta {
   display: flex;
@@ -274,7 +274,7 @@ h1 {
   font-size: 0.62rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #333;
+  color: #555;
   border: 1px solid #2a2a2a;
   padding: 0.1rem 0.45rem;
 }
@@ -283,20 +283,20 @@ h1 {
   font-size: 0.68rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #444;
+  color: #666;
 }
 
 .task-due.overdue { color: #c0392b; }
 .task-due.due-soon { color: #8a7000; }
-.task-due.done-due { color: #333; }
+.task-due.done-due { color: #555; }
 
 .task-link {
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #555;
+  color: #777;
   text-decoration: none;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #555;
   transition: color 0.2s, border-color 0.2s;
 }
 
@@ -306,7 +306,7 @@ h1 {
   font-size: 0.62rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #444;
+  color: #666;
   cursor: pointer;
   transition: color 0.15s;
 }
@@ -330,7 +330,7 @@ h1 {
 /* Empty state */
 .empty {
   text-align: left;
-  color: #333;
+  color: #555;
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -347,7 +347,7 @@ h1 {
   font-size: 0.68rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #444;
+  color: #666;
 }
 
 #footer.hidden { display: none; }
@@ -360,7 +360,7 @@ h1 {
   font-size: 0.68rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #444;
+  color: #666;
   transition: color 0.2s;
 }
 
