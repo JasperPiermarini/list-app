@@ -232,12 +232,13 @@ h1 {
 }
 
 .task-item.completed { opacity: 0.35; }
+.task-item.completed .star-btn { opacity: calc(1 / 0.35); color: #c8a000; }
 
 .star-btn {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.4rem;
+  font-size: 2rem;
   color: #3a3a3a;
   padding: 0;
   flex-shrink: 0;
